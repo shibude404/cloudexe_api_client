@@ -1,0 +1,27 @@
+{
+  "inference_url": "https://REPLACE_ME/v1/completions",
+  "api_key_env": "CLOUDEXE_API_KEY",
+  "api_style": "completions",
+  "model": "meta-llama/Llama-3.1-70B",
+  "prompt": "Replace this with a prompt containing the required number of input tokens.",
+  "output_tokens": 128,
+  "temperature": 0.0,
+  "concurrency": 1,
+  "warmup_requests": 1,
+  "repetitions": 3,
+  "request_timeout_seconds": 600,
+  "prometheus_url": "https://REPLACE_ME/metrics",
+  "prometheus_token_env": "CLOUDEXE_PROMETHEUS_TOKEN",
+  "telemetry_interval_seconds": 1.0,
+  "metric_names": {
+    "gpu_power_watts": "REPLACE_POWER_METRIC",
+    "gpu_utilization_percent": "REPLACE_GPU_UTILIZATION_METRIC",
+    "memory_controller_utilization_percent": "REPLACE_MEMORY_CONTROLLER_METRIC",
+    "gpu_memory_used_bytes": "REPLACE_GPU_MEMORY_USED_METRIC",
+    "sm_activity_percent": "REPLACE_SM_ACTIVITY_METRIC"
+  },
+  "required_metric_labels": {
+    "gpu": "REPLACE_GPU_LABEL"
+  },
+  "output_directory": "results"
+}
