@@ -1,27 +1,29 @@
 {
-  "inference_url": "https://REPLACE_ME/v1/completions",
+  "synthetic_test_data": false,
+  "inference_url": "https://CLOUDEXE_INFERENCE_URL/v1/completions",
   "api_key_env": "CLOUDEXE_API_KEY",
   "api_style": "completions",
   "model": "meta-llama/Llama-3.1-70B",
-  "prompt": "Replace this with a prompt containing the required number of input tokens.",
+  "prompt": "Replace with a tokenized prompt of the required input length.",
   "output_tokens": 128,
   "temperature": 0.0,
   "concurrency": 1,
   "warmup_requests": 1,
   "repetitions": 3,
   "request_timeout_seconds": 600,
-  "prometheus_url": "https://REPLACE_ME/metrics",
-  "prometheus_token_env": "CLOUDEXE_PROMETHEUS_TOKEN",
-  "telemetry_interval_seconds": 1.0,
-  "metric_names": {
-    "gpu_power_watts": "REPLACE_POWER_METRIC",
-    "gpu_utilization_percent": "REPLACE_GPU_UTILIZATION_METRIC",
-    "memory_controller_utilization_percent": "REPLACE_MEMORY_CONTROLLER_METRIC",
-    "gpu_memory_used_bytes": "REPLACE_GPU_MEMORY_USED_METRIC",
-    "sm_activity_percent": "REPLACE_SM_ACTIVITY_METRIC"
-  },
-  "required_metric_labels": {
-    "gpu": "REPLACE_GPU_LABEL"
+  "monitoring_url": "https://CLOUDEXE_MONITORING_URL/metrics",
+  "monitoring_auth": {"type": "bearer", "token_env": "CLOUDEXE_PROMETHEUS_TOKEN"},
+  "monitoring_timeout_seconds": 10,
+  "collection_interval_seconds": 1.0,
+  "max_acceptable_gap_seconds": 3.0,
+  "gpu_selector": {"gpu": "CLOUDEXE_GPU_LABEL", "allocation": "CLOUDEXE_ALLOCATION_LABEL"},
+  "metrics": {
+    "gpu_power_watts": {"source_name": "CLOUDEXE_POWER_METRIC", "source_unit": "CLOUDEXE_UNIT", "report_unit": "watts", "conversion_factor": 1.0, "required": true},
+    "gpu_utilization_percent": {"source_name": "CLOUDEXE_GPU_ACTIVITY_METRIC", "source_unit": "CLOUDEXE_UNIT", "report_unit": "percent", "conversion_factor": 1.0, "required": true},
+    "memory_controller_utilization_percent": {"source_name": "CLOUDEXE_MEMORY_CONTROLLER_METRIC", "source_unit": "CLOUDEXE_UNIT", "report_unit": "percent", "conversion_factor": 1.0, "required": true},
+    "gpu_memory_used_gib": {"source_name": "CLOUDEXE_MEMORY_USED_METRIC", "source_unit": "CLOUDEXE_UNIT", "report_unit": "GiB", "conversion_factor": 9.313225746154785e-10, "aggregation": "peak", "required": true},
+    "gpu_memory_capacity_gib": {"source_name": "CLOUDEXE_MEMORY_CAPACITY_METRIC", "source_unit": "CLOUDEXE_UNIT", "report_unit": "GiB", "conversion_factor": 9.313225746154785e-10, "aggregation": "peak", "required": true},
+    "sm_activity_percent": {"source_name": "CLOUDEXE_SM_ACTIVITY_METRIC", "source_unit": "CLOUDEXE_UNIT", "report_unit": "percent", "conversion_factor": 1.0, "required": false}
   },
   "output_directory": "results"
 }

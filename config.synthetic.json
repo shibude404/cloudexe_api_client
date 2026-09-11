@@ -1,0 +1,29 @@
+{
+  "synthetic_test_data": true,
+  "inference_url": "http://127.0.0.1:8765/v1/completions",
+  "api_key_env": "UNUSED_SYNTHETIC_API_KEY",
+  "api_style": "completions",
+  "model": "synthetic-model",
+  "prompt": "synthetic prompt",
+  "output_tokens": 128,
+  "temperature": 0.0,
+  "concurrency": 1,
+  "warmup_requests": 1,
+  "repetitions": 1,
+  "request_timeout_seconds": 10,
+  "monitoring_url": "http://127.0.0.1:8765/metrics?scenario=constant",
+  "monitoring_auth": {"type": "none", "token_env": ""},
+  "monitoring_timeout_seconds": 1,
+  "collection_interval_seconds": 0.25,
+  "max_acceptable_gap_seconds": 1.0,
+  "gpu_selector": {"gpu": "gpu0", "allocation": "local-test"},
+  "metrics": {
+    "gpu_power_watts": {"source_name": "synthetic_gpu_power_watts", "source_unit": "watts", "report_unit": "watts", "conversion_factor": 1.0, "required": true},
+    "gpu_utilization_percent": {"source_name": "synthetic_gpu_activity_percent", "source_unit": "percent", "report_unit": "percent", "conversion_factor": 1.0, "required": true},
+    "memory_controller_utilization_percent": {"source_name": "synthetic_memory_controller_activity_percent", "source_unit": "percent", "report_unit": "percent", "conversion_factor": 1.0, "required": true},
+    "gpu_memory_used_gib": {"source_name": "synthetic_gpu_memory_used_bytes", "source_unit": "bytes", "report_unit": "GiB", "conversion_factor": 9.313225746154785e-10, "aggregation": "peak", "required": true},
+    "gpu_memory_capacity_gib": {"source_name": "synthetic_gpu_memory_capacity_bytes", "source_unit": "bytes", "report_unit": "GiB", "conversion_factor": 9.313225746154785e-10, "aggregation": "peak", "required": true},
+    "sm_activity_percent": {"source_name": "synthetic_sm_activity_percent", "source_unit": "percent", "report_unit": "percent", "conversion_factor": 1.0, "required": false}
+  },
+  "output_directory": "results"
+}
